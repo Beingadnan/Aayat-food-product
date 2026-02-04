@@ -41,8 +41,20 @@ export default function AppleScrollSection() {
   const [messageIndex, setMessageIndex] = useState(0);
   const [resizeKey, setResizeKey] = useState(0);
   const [runwayVh, setRunwayVh] = useState(500);
+  const [isLoaded, setIsLoaded] = useState(false);
   const imagesCache = useRef<Map<number, HTMLImageElement>>(new Map());
   const rafRef = useRef<number>(0);
+
+  // Preload first frame so we know when to hide loading state
+  useEffect(() => {
+    const img = new Image();
+    img.src = GHEE_IMAGE_PATH(1);
+    img.onload = () => {
+      imagesCache.current.set(1, img);
+      setIsLoaded(true);
+    };
+    img.onerror = () => setIsLoaded(true); // hide loader even on error so UX isn't stuck
+  }, []);
 
   const updateProgress = useCallback(() => {
     const section = sectionRef.current;
@@ -157,6 +169,25 @@ export default function AppleScrollSection() {
           className="absolute inset-0 h-full w-full object-cover"
           style={{ objectPosition: "center" }}
         />
+        {/* Loading overlay — hides when first frame is ready */}
+        <div
+          className={`absolute inset-0 z-10 flex flex-col items-center justify-center bg-[var(--luxury-cream)] transition-opacity duration-500 ease-out ${
+            isLoaded ? "pointer-events-none opacity-0" : "opacity-100"
+          }`}
+          aria-hidden={isLoaded}
+          aria-live="polite"
+        >
+          <div
+            className="h-10 w-10 animate-spin rounded-full border-2 border-[var(--luxury-gold)] border-t-transparent"
+            aria-hidden
+          />
+          <p className="mt-4 font-[family-name:var(--font-playfair)] text-sm font-medium tracking-wide text-[var(--luxury-charcoal)]">
+            Loading experience...
+          </p>
+          <p className="mt-1 text-xs text-[var(--luxury-muted)]">
+            Desi Ghee Soan Papdi
+          </p>
+        </div>
         <div
           className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--luxury-cream)]/30"
           aria-hidden
