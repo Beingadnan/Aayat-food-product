@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/* Aayat Food Product — Brand palette from packaging */
+:root {
+  --background: #faf9f7;
+  --foreground: #1a1a1a;
+  /* Primary: deep purple (packaging background) */
+  --aayat-purple: #5e1c6b;
+  --aayat-purple-dark: #4a1655;
+  --aayat-purple-light: #7a2490;
+  /* Secondary: bright yellow (logo, CTAs) */
+  --aayat-yellow: #fddb22;
+  --aayat-yellow-dark: #e6c41e;
+  --aayat-yellow-light: #fde85c;
+  /* Accent: dark green (AAYAT logo text, leaf) */
+  --aayat-green: #1c6b2a;
+  --aayat-green-dark: #155522;
+  --aayat-green-light: #248536;
+  /* Neutrals */
+  --aayat-white: #ffffff;
+  --aayat-cream: #faf8f3;
+  --aayat-muted: #5c5247;
+  --aayat-border: #e8e0d4;
+
+  /* Premium / Quiet Luxury palette */
+  --luxury-cream: #FDFCF0;
+  --luxury-charcoal: #1c1c1c;
+  --luxury-charcoal-soft: #2d2d2d;
+  --luxury-gold: #b8860b;
+  --luxury-gold-light: #d4a84b;
+  --luxury-muted: #6b6b6b;
+  --luxury-border: #e8e6e0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-playfair);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+/* Smooth scroll and focus styles */
+html {
+  scroll-behavior: smooth;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--aayat-yellow);
+  outline-offset: 2px;
+}
+
+/* Section spacing consistency */
+.section-padding {
+  padding-inline: clamp(1rem, 5vw, 2.5rem);
+  padding-block: clamp(3rem, 8vw, 5rem);
+}
+
+.container-narrow {
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.container-wide {
+  max-width: 90rem;
+  margin-inline: auto;
+}
