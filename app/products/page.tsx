@@ -47,9 +47,11 @@ function ProductDetailModal({
           />
         </div>
         <div className="p-8">
+          {product.tagline && (
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--luxury-gold)]">
             {product.tagline}
           </p>
+        )}
           <h2
             className="mt-2 font-[family-name:var(--font-playfair)] text-2xl font-bold tracking-tight text-[var(--luxury-charcoal)]"
             style={{ fontFamily: "var(--font-playfair)" }}
@@ -59,7 +61,7 @@ function ProductDetailModal({
           <p className="mt-4 text-sm leading-relaxed text-[var(--luxury-muted)]">
             {product.description}
           </p>
-          <p className="mt-5 text-lg font-semibold text-[var(--luxury-gold)]">{product.price}</p>
+          <p className="mt-5 text-lg font-semibold text-[var(--luxury-gold)]">₹{product.price}</p>
           <button
             type="button"
             className="mt-6 rounded-full border-2 border-[var(--luxury-gold)] bg-transparent px-6 py-2.5 text-sm font-semibold uppercase tracking-widest text-[var(--luxury-gold)] hover:bg-[var(--luxury-gold)] hover:text-[var(--luxury-cream)] transition-colors"
@@ -131,7 +133,7 @@ export default function ProductsPage() {
                 {featuredProducts.map((product) => (
                   <motion.article
                     key={product.id}
-                    className={`group relative overflow-hidden rounded-2xl border border-[var(--luxury-border)] shadow-sm transition hover:border-[var(--luxury-gold)] hover:shadow-md ${product.cardBg ?? "bg-[var(--aayat-white)]"}`}
+                    className="group relative overflow-hidden rounded-2xl border border-[var(--luxury-border)] bg-[var(--aayat-white)] shadow-sm transition hover:border-[var(--luxury-gold)] hover:shadow-md"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ type: "spring", stiffness: 80, damping: 18 }}
@@ -165,7 +167,7 @@ export default function ProductsPage() {
                           {product.description}
                         </p>
                         <p className="mt-4 text-base font-semibold text-[var(--luxury-gold)]">
-                          {product.price}
+                          ₹{product.price}
                         </p>
                         <span className="mt-4 inline-block text-sm font-semibold uppercase tracking-widest text-[var(--luxury-gold)]">
                           View details →
@@ -198,7 +200,7 @@ export default function ProductsPage() {
               {products.map((product) => (
                 <motion.li
                   key={product.id}
-                  className={`group relative overflow-hidden rounded-2xl border border-[var(--luxury-border)] shadow-sm transition hover:border-[var(--luxury-gold)] hover:shadow-md ${product.cardBg ?? "bg-[var(--luxury-cream)]"}`}
+                  className="group relative overflow-hidden rounded-2xl border border-[var(--luxury-border)] bg-[var(--luxury-cream)] shadow-sm transition hover:border-[var(--luxury-gold)] hover:shadow-md"
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ type: "spring", stiffness: 80, damping: 18 }}
@@ -216,9 +218,11 @@ export default function ProductsPage() {
                       />
                     </div>
                     <div className="flex flex-1 flex-col p-5">
+                      {product.tagline && (
                       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--luxury-gold)]">
                         {product.tagline}
                       </p>
+                    )}
                       <h3
                         className="mt-1.5 font-[family-name:var(--font-playfair)] text-lg font-bold tracking-tight text-[var(--luxury-charcoal)]"
                         style={{ fontFamily: "var(--font-playfair)" }}
@@ -229,7 +233,7 @@ export default function ProductsPage() {
                         {product.description}
                       </p>
                       <p className="mt-auto pt-4 text-base font-semibold text-[var(--luxury-gold)]">
-                        {product.price}
+                        ₹{product.price}
                       </p>
                       <span className="mt-2 text-xs font-semibold uppercase tracking-wider text-[var(--luxury-gold)]">
                         View details

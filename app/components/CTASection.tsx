@@ -15,7 +15,7 @@ export default function CTASection() {
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Link
-            href="/products"
+            href="/#products"
             className="inline-flex items-center justify-center rounded-full bg-[var(--luxury-gold)] px-6 py-3 text-base font-semibold text-[var(--luxury-cream)] shadow-lg transition hover:bg-[var(--luxury-gold-light)]"
           >
             View all products

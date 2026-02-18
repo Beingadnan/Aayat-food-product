@@ -17,7 +17,7 @@ export default function Footer() {
             </p>
           </div>
           <nav className="flex flex-wrap justify-center gap-6 text-sm">
-            <Link href="/products" className="hover:text-[var(--aayat-white)] transition">Products</Link>
+            <Link href="/#products" className="hover:text-[var(--aayat-white)] transition">Products</Link>
             <Link href="/#about" className="hover:text-[var(--aayat-white)] transition">About</Link>
             <Link href="/#contact" className="hover:text-[var(--aayat-white)] transition">Contact</Link>
           </nav>
